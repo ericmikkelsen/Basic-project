@@ -1,0 +1,87 @@
+{
+  "name": "agent-skills",
+  "displayName": "Agent Skills for Copilot Chat",
+  "description": "Addy Osmani's agent-skills slash commands in GitHub Copilot Chat — /spec, /plan, /build, /test, /review, /ship, /simplify",
+  "version": "0.1.0",
+  "publisher": "agent-skills",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "keywords": [
+    "copilot",
+    "chat",
+    "agent",
+    "skills",
+    "tdd",
+    "spec",
+    "review"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericmikkelsen/Basic-project"
+  },
+  "license": "MIT",
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "agent-skills.assistant",
+        "name": "agent-skills",
+        "fullName": "Agent Skills",
+        "description": "Addy Osmani's agent-skills workflows: /spec, /plan, /build, /test, /review, /ship, /simplify",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "spec",
+            "description": "Start spec-driven development — write a structured specification before any code"
+          },
+          {
+            "name": "plan",
+            "description": "Break a spec into small, ordered tasks with acceptance criteria"
+          },
+          {
+            "name": "build",
+            "description": "Implement the next pending task — RED→GREEN→commit using TDD"
+          },
+          {
+            "name": "test",
+            "description": "Run the TDD cycle for new features, or the Prove-It pattern for bug fixes"
+          },
+          {
+            "name": "review",
+            "description": "Five-axis code review: correctness, readability, architecture, security, performance"
+          },
+          {
+            "name": "ship",
+            "description": "Pre-launch checklist with parallel code/security/test review → GO/NO-GO decision"
+          },
+          {
+            "name": "simplify",
+            "description": "Reduce code complexity without changing behavior — one change at a time with test verification"
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "build": "npm run compile",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.4.0"
+  }
+}

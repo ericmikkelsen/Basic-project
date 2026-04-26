@@ -42,3 +42,8 @@ The following [Addy Osmani agent skills](https://github.com/addyosmani/agent-ski
 - `test-driven-development` — TDD cycle and Prove-It pattern for bug fixes
 - `spec-driven-development` — Spec-before-code workflow with human review gates
 - `incremental-implementation` — Thin vertical slices, scope discipline, rollback-friendly changes
+
+## Chat Modes
+Seven Copilot chat modes are available in `.github/chat-modes/`. Select a mode in the
+Copilot Chat UI to activate its workflow, or use the `@agent-skills` VS Code extension
+for slash command access (`/spec`, `/plan`, `/build`, `/test`, `/review`, `/ship`, `/simplify`).
