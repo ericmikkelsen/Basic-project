@@ -1,6 +1,6 @@
 ---
 name: narrative-branching
-description: Structures work as a story with chapters. Use when starting any feature that spans more than one concern. Use when you need to organise AI-generated code so that reviewers can read it like a book instead of parsing a wall of diff.
+description: Structures work as a story with chapters. Use when starting any feature that spans more than one concern. Use when you need to organize AI-generated code so that reviewers can read it like a book instead of parsing a wall of diff.
 ---
 
 # Narrative Branching
