@@ -16,6 +16,16 @@ Treat every feature as a story and every reviewable chunk as a chapter. The stor
 - When an AI agent is about to generate a large body of code
 - When a team needs to parallelise work on a single feature
 
+## Why Narrative Works
+
+The chapter structure is not an aesthetic choice — it maps directly to how human brains evolved to receive and retain information.
+
+**Evolved narrative cognition.** For most of human evolutionary history, knowledge was transmitted as sequential story — not as monolithic documents. Archaeological and anthropological evidence shows that social storytelling is at least 300,000 years old and correlates strongly with cooperation and knowledge transfer (Wiessner, 2014; Smith et al., 2017). Our brains developed preferential encoding for narrative structure: setup, problem, resolution. A 2,000-line diff with no arc is the opposite of how humans evolved to absorb new information. Sequential chapters in reading order give reviewers a cognitive structure their brains are optimized to process.
+
+**Schema activation (Bartlett, 1932).** A reviewer who reads STORY.md before any code has an activated schema — a mental model of the feature's goal, the chapter sequence, and each chapter's scope. Schema-activated readers comprehend new material faster and with fewer errors. The human gate at Step 1 is not bureaucracy; it forces a STORY.md to exist before any code is written, ensuring reviewers have that orientating map before they need it.
+
+**Incremental cognitive load (Sweller, 1988).** Each chapter should be fully comprehensible on its own before the next opens. Reading chapter 01 builds a schema; chapter 02 extends it. By the final chapter, the reviewer has incrementally constructed a complete mental model — with far less total effort than reading the equivalent change as a monolith.
+
 ## Branch Naming
 
 ```

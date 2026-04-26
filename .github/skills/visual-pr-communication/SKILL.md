@@ -9,6 +9,22 @@ description: Generates a comprehension artifact for every PR. Use when opening a
 
 Every PR description is a communication document, not a changelog. Before a reviewer touches the diff, they should be able to answer: what changed, why, and what is different about the world now? Generate a structured, visual comprehension artifact as part of every PR description.
 
+## Human Cognition — Why This Works
+
+These rules are grounded in how the human brain actually processes unfamiliar code during review.
+
+**Schema activation (Bartlett, 1932; Rumelhart, 1980).** Reviewers can only make sense of new information by mapping it onto what they already know. The "Before" bullets exist to activate that prior mental model *before* the change is introduced. Without them, the reviewer must reconstruct context from the diff itself — slow, error-prone, and the primary cause of review fatigue.
+
+**Dual coding (Paivio, 1971; Mayer, 2009).** The brain processes visual/spatial and verbal/linguistic information through two independent channels. Pairing the change map (visual) with the Before/After narrative (verbal) encodes the change in both channels simultaneously — comprehension is faster and retention is higher than with either channel alone. A diagram without a narrative, or a narrative without a diagram, is measurably weaker than both together.
+
+**Cognitive load (Sweller, 1988).** Working memory is finite. Every concept a reviewer must hold in mind while reading code adds *extraneous* cognitive load — effort that doesn't contribute to understanding the change. The PR description's job is to offload that extraneous load so the reviewer's limited working memory is free for the actual diff.
+
+**Working memory limits (Miller, 1956).** Humans hold roughly 7 ± 2 chunks of information in working memory at a time. The 10-node cap on the change map and the 5-bullet cap on Before/After are not style preferences — they keep the artifact within working memory capacity. Exceeding those limits forces the reviewer to mentally paginate, and pagination is where subtle bugs get missed.
+
+**Primacy effect (serial position effect).** Information encountered first is disproportionately rehearsed and encoded. The change map goes first so its spatial layout anchors the reviewer's mental model throughout the entire review session — even when they are reading line 200 of the diff.
+
+**BLUF — bottom line up front (speech communication).** State the most important fact before asking the audience to process supporting detail. The entire three-part artifact applies this principle at the PR level: the reviewer gets context, motivation, and scope *before* they open the diff. Without the artifact, reviewers must derive all of that by reading code bottom-up — the reverse of how humans efficiently process information.
+
 ## When to Use
 
 - Opening any chapter branch PR (required)

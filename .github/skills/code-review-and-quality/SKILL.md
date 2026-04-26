@@ -43,6 +43,8 @@ Any N+1 query patterns? Any unbounded loops? Any unnecessary re-renders?
 ~1000 lines changed  → Too large. Split it.
 ```
 
+These thresholds are backed by empirical research: Rigby & Bird (2013) found that defect detection rates decline as change size grows, because reviewers' ability to hold full context in working memory degrades with each additional chunk of change (Sweller, 1988). The file-count limit reflects the same principle from a different angle — "cognitive scatter" across many files imposes the same extraneous load as sheer line volume.
+
 ## Reviewability Budget
 
 Team-wide limits are stored in `.github/review-config.json`:

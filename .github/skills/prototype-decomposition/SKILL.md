@@ -7,7 +7,7 @@ description: Converts an oversized prototype branch into a story with properly-s
 
 ## Overview
 
-Vibe coding and exploratory prototyping are legitimate discovery tools. But a 2,000-line prototype diff is not a pull request — it's a dump. This skill turns a prototype branch into a story with chapters: structured, reviewable, and understandable by a fresh reader.
+Vibe coding and exploratory prototyping are legitimate discovery tools. But a 2,000-line prototype diff is not a pull request — it's a dump. A monolithic diff exceeds working memory capacity, eliminates the primacy cues reviewers rely on to orient themselves, and makes meaningful review cognitively impossible (Sweller, 1988; Rigby & Bird, 2013). This skill turns a prototype branch into a story with chapters: structured, reviewable, and understandable by a fresh reader.
 
 The process has two phases with a mandatory human gate in between. The original branch is never touched until restructuring is verified.
 
