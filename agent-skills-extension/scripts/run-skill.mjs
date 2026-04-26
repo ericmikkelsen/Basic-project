@@ -45,12 +45,17 @@ async function main() {
 		);
 		process.exit(2);
 	}
-	// Load SYSTEM_PROMPT from the compiled extension code.
-	const compiled = await import(`../out/commands/${skillName}.js`);
-	if (typeof compiled.SYSTEM_PROMPT !== 'string') {
-		throw new Error(`Compiled ${skillName} does not export SYSTEM_PROMPT`);
+	// Read SYSTEM_PROMPT from the .ts source so we don't pull in the
+	// `vscode` module (which only exists inside the editor host).
+	const sourcePath = resolve(repoRoot, 'src', 'commands', `${skillName}.ts`);
+	const source = await readFile(sourcePath, 'utf8');
+	const match = source.match(
+		/SYSTEM_PROMPT\s*=\s*`([\s\S]*?)`\.trim\(\)\s*;/,
+	);
+	if (!match) {
+		throw new Error(`Could not extract SYSTEM_PROMPT from ${sourcePath}`);
 	}
-	const systemPrompt = compiled.SYSTEM_PROMPT;
+	const systemPrompt = match[1].trim();
 
 	const userMessage = await readFile(resolve(process.cwd(), inputPath), 'utf8');
 
@@ -58,6 +63,7 @@ async function main() {
 	await client.start();
 
 	let assistantContent = '';
+	let allEvents = [];
 	try {
 		const session = await client.createSession({
 			model: process.env.COPILOT_MODEL ?? 'gpt-5',
@@ -65,15 +71,27 @@ async function main() {
 			systemMessage: { mode: 'replace', content: systemPrompt },
 		});
 
-		const done = new Promise((resolveP) => {
-			session.on('assistant.message', (event) => {
+		session.on((event) => {
+			allEvents.push({ type: event.type, data: event.data });
+			if (event.type === 'assistant.message' && event.data?.content) {
 				assistantContent = event.data.content;
-			});
-			session.on('session.idle', () => resolveP());
+			}
 		});
 
-		await session.send({ prompt: userMessage });
-		await done;
+		const finalEvent = await session.sendAndWait({ prompt: userMessage });
+		if (!assistantContent && finalEvent?.data?.content) {
+			assistantContent = finalEvent.data.content;
+		}
+		// Fallback: ask the session for its full message history.
+		if (!assistantContent) {
+			const messages = await session.getMessages();
+			const lastAssistant = [...messages]
+				.reverse()
+				.find((m) => m.type === 'assistant.message');
+			if (lastAssistant?.data?.content) {
+				assistantContent = lastAssistant.data.content;
+			}
+		}
 		await session.disconnect();
 	} finally {
 		await client.stop();
@@ -84,7 +102,7 @@ async function main() {
 	const stamp = new Date().toISOString().replace(/[:.]/g, '-');
 	const outPath = resolve(outDir, `${skillName}-${stamp}.md`);
 
-	const body = `# Skill run: /${skillName}\n\nInput: ${inputPath}\n\n## Output\n\n${assistantContent}\n`;
+	const body = `# Skill run: /${skillName}\n\nInput: ${inputPath}\n\n## Output\n\n${assistantContent || '(no assistant.message content captured)'}\n\n## Event log\n\n\`\`\`json\n${JSON.stringify(allEvents, null, 2)}\n\`\`\`\n`;
 	await writeFile(outPath, body, 'utf8');
 	console.log(outPath);
 }
