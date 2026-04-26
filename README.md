@@ -34,7 +34,24 @@ This repo ships two ways to use the agent-skills workflows in Copilot Chat:
 @agent-skills /simplify → reduce complexity
 ```
 
-See [`agent-skills-extension/README.md`](./agent-skills-extension/README.md) for installation and publishing instructions.
+#### Install from VSIX (recommended for most users)
+
+```bash
+cd agent-skills-extension
+npm install
+npm run package          # produces agent-skills-0.1.0.vsix
+```
+
+Then in VS Code: **Extensions** → **⋯** → **Install from VSIX…** → select `agent-skills-0.1.0.vsix`.
+
+#### Install for development (F5 hot-reload)
+
+1. `cd agent-skills-extension && npm install`
+2. `npm run compile`
+3. Open the `agent-skills-extension/` folder in VS Code
+4. Press **F5** — a new Extension Development Host window opens with `@agent-skills` active
+
+See [`agent-skills-extension/README.md`](./agent-skills-extension/README.md) for full details and Marketplace publishing instructions.
 
 ## Agent Skills
 
