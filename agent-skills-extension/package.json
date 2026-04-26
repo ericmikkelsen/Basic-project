@@ -58,7 +58,7 @@
           },
           {
             "name": "ship",
-            "description": "Pre-launch checklist with parallel code/security/test review → GO/NO-GO decision"
+            "description": "Pre-launch checklist with code, security, and test review → GO/NO-GO decision"
           },
           {
             "name": "simplify",
