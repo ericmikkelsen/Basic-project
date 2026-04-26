@@ -29,6 +29,8 @@ The `.github/skills/` directory contains the underlying [agent skill](https://do
 - `git-workflow-and-versioning` — conventional commits, branching
 - `ci-cd-and-automation` — quality gate pipelines
 
+For a plain-language developer flow, see [docs/developer-workflow.md](./docs/developer-workflow.md).
+
 ## Conventional Commits & Versioning
 
 - Every commit must follow [Conventional Commits](https://www.conventionalcommits.org/) format
