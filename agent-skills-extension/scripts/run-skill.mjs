@@ -59,7 +59,14 @@ async function main() {
 
 	const userMessage = await readFile(resolve(process.cwd(), inputPath), 'utf8');
 
-	const client = new CopilotClient();
+	const gitHubToken =
+		process.env.COPILOT_GITHUB_TOKEN ||
+		process.env.GH_TOKEN ||
+		process.env.GITHUB_TOKEN;
+
+	const client = new CopilotClient(
+		gitHubToken ? { gitHubToken } : undefined,
+	);
 	await client.start();
 
 	let assistantContent = '';
@@ -69,6 +76,7 @@ async function main() {
 			model: process.env.COPILOT_MODEL ?? 'gpt-5',
 			onPermissionRequest: approveAll,
 			systemMessage: { mode: 'replace', content: systemPrompt },
+			...(gitHubToken ? { gitHubToken } : {}),
 		});
 
 		session.on((event) => {
