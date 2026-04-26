@@ -5,6 +5,10 @@ node_modules/
 dist/
 build/
 out/
+out-test/
+
+# Skill run outputs (Copilot SDK harness)
+tmp/
 
 # Environment files
 .env

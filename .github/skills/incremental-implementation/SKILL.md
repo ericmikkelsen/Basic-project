@@ -9,6 +9,16 @@ description: Delivers changes incrementally. Use when implementing any feature o
 
 Build in thin vertical slices — implement one piece, test it, verify it, then expand. Each increment should leave the system in a working, testable state.
 
+## Why Incremental Works
+
+Incremental development is not just a productivity habit — it is a cognitive necessity.
+
+**Working memory limits (Sweller, 1988; Miller, 1956).** Writing 300 lines of code before testing exceeds working memory capacity. Reviewers cannot hold all of it in mind at once. But small, testable increments stay within cognitive limits — each one is fully comprehensible before the next builds on it.
+
+**Spaced practice (Cepeda et al., 2006).** Testing after each small slice is a form of spaced practice: you encode understanding of slice 1, then extend it with slice 2, then extend again with slice 3. This repeated encoding is how human memory works. Writing 300 lines, then testing once, encodes much less reliably.
+
+**Rollback cost.** A 300-line change that fails tests is expensive to debug: was the bug in lines 1–50, 51–100, or 150–300? A 30-line slice is cheap to revert and restart. Cheap rollback means developers take smart risks and recover fast.
+
 ## When to Use
 
 - Implementing any multi-file change
