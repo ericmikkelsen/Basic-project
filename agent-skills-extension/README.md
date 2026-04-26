@@ -39,9 +39,17 @@ Type `@agent-skills` followed by a slash command in the Copilot Chat panel:
 5. Press `F5` to launch a new Extension Development Host window
 6. Open Copilot Chat and type `@agent-skills /spec`
 
-## Publishing
+## Build a VSIX (local install, no Marketplace)
 
-To publish to the VS Code Marketplace:
+```bash
+cd agent-skills-extension
+npm install
+npm run package          # produces agent-skills-0.1.0.vsix
+```
+
+Then in VS Code: **Extensions** → **⋯** → **Install from VSIX…** → select the `.vsix` file.
+
+## Publishing to the VS Code Marketplace
 
 ```bash
 npm install -g @vscode/vsce

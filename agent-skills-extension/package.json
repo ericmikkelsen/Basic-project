@@ -74,9 +74,11 @@
     "build": "npm run compile",
     "lint": "eslint src --ext ts",
     "pretest": "npm run compile",
-    "vscode:prepublish": "npm run compile"
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package"
   },
   "devDependencies": {
+    "@vscode/vsce": "^3.0.0",
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.90.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
