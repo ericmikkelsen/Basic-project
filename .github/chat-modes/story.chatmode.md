@@ -76,23 +76,55 @@ Write `STORY.md` to the story branch with the approved content. Commit:
 ```bash
 git add STORY.md
 git commit -m "docs(story): add STORY.md for <name>"
+git push -u origin story/<name>
+git ls-remote --heads origin story/<name>
 ```
 
-### Step 6 — Start the first chapter
+Only continue after the story branch exists on `origin`.
+
+### Step 6 — Create chapter branches as real remote branches and open PRs
 
 ```bash
 git checkout story/<name>
-git checkout -b chapter/<name>/01-<slug>
+git pull --ff-only origin story/<name>
+git checkout -b chapter/<name>/<seq>-<slug>
 ```
 
-Implement only what chapter 01 says. Check the reviewability budget before committing:
+Implement only what the current chapter says. Check the reviewability budget before committing:
 
 ```bash
 git diff --staged --stat
 # maxLinesPerChapter: 300, maxFilesPerChapter: 5 (see .github/review-config.json)
 ```
 
-Use the `visual-pr-communication` skill to write the PR description before opening the PR.
+Push and verify the chapter branch, then open a PR targeting the story branch:
+
+```bash
+git push -u origin chapter/<name>/<seq>-<slug>
+git ls-remote --heads origin chapter/<name>/<seq>-<slug>
+gh pr create \
+    --base story/<name> \
+    --head chapter/<name>/<seq>-<slug> \
+    --title "<type>(<scope>): <chapter summary>" \
+    --body-file <pr-body-file>
+```
+
+Use the `visual-pr-communication` skill to generate the PR body before opening the PR.
+
+If `gh` CLI is unavailable or unauthenticated, provide a direct compare URL so the user can open the PR manually:
+
+```text
+https://github.com/<owner>/<repo>/compare/story/<name>...chapter/<name>/<seq>-<slug>?expand=1
+```
+
+Never report a chapter as "created" unless both conditions are true:
+
+- `git ls-remote --heads origin chapter/<name>/<seq>-<slug>` returns a ref.
+- A PR exists with base `story/<name>` and head `chapter/<name>/<seq>-<slug>`.
+
+### Step 7 — Repeat per chapter
+
+Repeat Step 6 for each chapter in order (`01`, `02`, `03`, ...). Do not skip chapter numbers.
 
 ## Slicing Rules
 
@@ -109,3 +141,9 @@ Before creating any branch:
 - [ ] Each chapter scope fits in one sentence
 - [ ] No chapter depends on a later chapter
 - [ ] Branch names follow `story/<name>` and `chapter/<name>/<seq>-<slug>`
+
+Before reporting completion:
+
+- [ ] Story branch exists on origin
+- [ ] Every chapter branch exists on origin
+- [ ] Every chapter has an open PR targeting the story branch
