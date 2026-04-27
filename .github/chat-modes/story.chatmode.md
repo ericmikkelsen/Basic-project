@@ -77,7 +77,7 @@ Write `STORY.md` to the story branch with the approved content. Commit:
 git add STORY.md
 git commit -m "docs(story): add STORY.md for <name>"
 git push -u origin story/<name>
-git ls-remote --heads origin story/<name>
+test -n "$(git ls-remote --exit-code --heads origin story/<name>)"
 ```
 
 Only continue after the story branch exists on `origin`.
@@ -101,12 +101,13 @@ Push and verify the chapter branch, then open a PR targeting the story branch:
 
 ```bash
 git push -u origin chapter/<name>/<seq>-<slug>
-git ls-remote --heads origin chapter/<name>/<seq>-<slug>
+test -n "$(git ls-remote --exit-code --heads origin chapter/<name>/<seq>-<slug>)"
 gh pr create \
     --base story/<name> \
     --head chapter/<name>/<seq>-<slug> \
     --title "<type>(<scope>): <chapter summary>" \
     --body-file <pr-body-file>
+gh pr list --base story/<name> --head chapter/<name>/<seq>-<slug> --state open
 ```
 
 Use the `visual-pr-communication` skill to generate the PR body before opening the PR.
@@ -119,8 +120,8 @@ https://github.com/<owner>/<repo>/compare/story/<name>...chapter/<name>/<seq>-<s
 
 Never report a chapter as "created" unless both conditions are true:
 
-- `git ls-remote --heads origin chapter/<name>/<seq>-<slug>` returns a ref.
-- A PR exists with base `story/<name>` and head `chapter/<name>/<seq>-<slug>`.
+- `test -n "$(git ls-remote --exit-code --heads origin chapter/<name>/<seq>-<slug>)"` exits successfully.
+- `gh pr list --base story/<name> --head chapter/<name>/<seq>-<slug> --state open` returns a non-empty result.
 
 ### Step 7 — Repeat per chapter
 

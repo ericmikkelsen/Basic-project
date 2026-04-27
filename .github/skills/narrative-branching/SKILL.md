@@ -118,9 +118,10 @@ git checkout -b chapter/<name>/<seq>-<slug>
 git push -u origin chapter/<name>/<seq>-<slug>
 test -n "$(git ls-remote --exit-code --heads origin chapter/<name>/<seq>-<slug>)"
 gh pr create --base story/<name> --head chapter/<name>/<seq>-<slug> --title "docs(chapter): <seq>-<slug>" --body "Chapter PR for <name>."
+gh pr list --base story/<name> --head chapter/<name>/<seq>-<slug> --state open
 ```
 
-Do not report a chapter as created unless the remote branch exists and the PR exists.
+Do not report a chapter as created unless the `gh pr list` command above returns a non-empty result confirming an open PR with the correct base and head.
 
 **Chapter rules:**
 - A chapter must not touch files that belong to a different chapter's concern.
