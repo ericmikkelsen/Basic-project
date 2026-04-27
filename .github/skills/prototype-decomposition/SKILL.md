@@ -38,6 +38,7 @@ git log main..HEAD --oneline
 ```
 
 Report:
+
 - Total lines changed (added + removed)
 - Total files touched
 - Number of commits on the branch
@@ -48,6 +49,7 @@ Report:
 Read the full diff and group changes into clusters. Apply these signals in order:
 
 **Semantic signal** — What kind of change is it?
+
 - Schema / data model changes
 - API / service layer changes
 - UI / view layer changes
@@ -56,6 +58,7 @@ Read the full diff and group changes into clusters. Apply these signals in order
 - Documentation
 
 **Coupling signal** — Which changes call or depend on each other?
+
 - If function A is new and function B calls A, they are coupled. A must land before B.
 - Migrations must land before the code that uses the new columns.
 - Types must land before the code that uses the types.
@@ -70,29 +73,34 @@ Output a draft `STORY.md` that proposes the chapter breakdown:
 # Story: [Derive a name from the prototype branch purpose]
 
 ## Motivation
+
 [One or two sentences inferred from the prototype's changes.]
 
 ## Acceptance Criteria
+
 [Inferred from the prototype's behavior — what did it make work?]
 
 ## Proposed Chapters
 
-| # | Suggested branch name | Files | Est. lines | Rationale |
-|---|----------------------|-------|-----------|-----------|
-| 01 | `chapter/<story>/01-<slug>` | file1.ts, file2.ts | ~80 | Foundation — must land first because chapters 02–03 depend on it |
-| 02 | `chapter/<story>/02-<slug>` | file3.ts, file4.ts | ~120 | API layer — depends on 01 |
-| 03 | `chapter/<story>/03-<slug>` | file5.ts | ~60 | UI — depends on 02 |
+| #   | Suggested branch name       | Files              | Est. lines | Rationale                                                        |
+| --- | --------------------------- | ------------------ | ---------- | ---------------------------------------------------------------- |
+| 01  | `chapter/<story>/01-<slug>` | file1.ts, file2.ts | ~80        | Foundation — must land first because chapters 02–03 depend on it |
+| 02  | `chapter/<story>/02-<slug>` | file3.ts, file4.ts | ~120       | API layer — depends on 01                                        |
+| 03  | `chapter/<story>/03-<slug>` | file5.ts           | ~60        | UI — depends on 02                                               |
 
 ## Coupling Notes
+
 [Any cross-chapter dependencies that require a specific merge order.]
 
 ## Open Questions
+
 [Anything ambiguous that the human should resolve before restructuring begins.]
 ```
 
 ### 1.4 Present to human — STOP HERE
 
 Present the proposed `STORY.md` and ask the human to:
+
 1. Confirm or rename the story
 2. Adjust chapter boundaries (merge, split, reorder)
 3. Resolve any open questions
@@ -138,16 +146,19 @@ git checkout -b chapter/<name>/<seq>-<slug>
 Apply the changes belonging to this chapter. There are two approaches:
 
 **Cherry-pick approach** (when commits map cleanly to chapters):
+
 ```bash
 git cherry-pick <commit-sha>
 ```
 
 **Manual re-application** (when commits are tangled):
+
 - Copy only the files and hunks assigned to this chapter from the prototype diff.
 - Apply them cleanly on top of the story branch.
 - Run tests before committing.
 
 After applying:
+
 ```bash
 npm test   # must pass before committing
 git commit -m "<type>(<scope>): <chapter description>"
@@ -170,6 +181,7 @@ git diff <prototype-branch>...story/<name>
 If the diff shows unexpected differences, resolve before opening the story-to-main PR.
 
 Once the story PR is merged to main, the prototype branch can be deleted:
+
 ```bash
 git push origin --delete <prototype-branch>
 ```
@@ -197,10 +209,10 @@ Before declaring the restructure complete:
 
 ## SMART Goals
 
-| Goal | Measure | Target |
-|---|---|---|
-| Complete Phase 1 (analysis + proposal) | Time from `/rescue` invocation to human gate | ≤ 2 hours |
-| Complete Phase 2 (restructure) after approval | Time from approval to all chapter PRs open | ≤ 2 business days |
-| No chapter exceeds the reviewability budget | `git diff --stat` per chapter | 300 lines / 5 files |
-| Prototype branch preserved until story merges to main | Branch still exists in `git branch -r` | 100% |
-| All proposed chapters have a rationale | "Rationale" column filled in proposed STORY.md table | 100% of chapters |
+| Goal                                                  | Measure                                              | Target              |
+| ----------------------------------------------------- | ---------------------------------------------------- | ------------------- |
+| Complete Phase 1 (analysis + proposal)                | Time from `/rescue` invocation to human gate         | ≤ 2 hours           |
+| Complete Phase 2 (restructure) after approval         | Time from approval to all chapter PRs open           | ≤ 2 business days   |
+| No chapter exceeds the reviewability budget           | `git diff --stat` per chapter                        | 300 lines / 5 files |
+| Prototype branch preserved until story merges to main | Branch still exists in `git branch -r`               | 100%                |
+| All proposed chapters have a rationale                | "Rationale" column filled in proposed STORY.md table | 100% of chapters    |

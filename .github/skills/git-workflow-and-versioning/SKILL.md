@@ -30,6 +30,7 @@ Each commit does one logical thing.
 ### 3. Descriptive Messages (Conventional Commits)
 
 **Format:**
+
 ```
 <type>(<optional scope>): <short description>
 
@@ -37,6 +38,7 @@ Each commit does one logical thing.
 ```
 
 **Types:**
+
 - `feat` — New feature (triggers minor version bump)
 - `fix` — Bug fix (triggers patch version bump)
 - `refactor` — Code change that neither fixes a bug nor adds a feature

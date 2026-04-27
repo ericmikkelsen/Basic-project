@@ -12,18 +12,20 @@
 <!-- Delete this section if the change has no visible UI impact. -->
 
 | Before | After |
-|---|---|
-|  |  |
+| ------ | ----- |
+|        |       |
 
 ## Browser checklist
 
 **Desktop**
+
 - [ ] Chrome (latest)
 - [ ] Firefox (latest)
 - [ ] Safari (latest)
 - [ ] Edge (latest)
 
 **Mobile**
+
 - [ ] iOS Safari (iPhone)
 - [ ] Chrome for Android
 - [ ] Samsung Internet (if applicable)
@@ -44,10 +46,10 @@
 
 ## Five-axis self-review
 
-| Axis | Notes |
-|---|---|
-| Correctness | |
-| Readability | |
-| Architecture | |
-| Security | |
-| Performance | |
+| Axis         | Notes |
+| ------------ | ----- |
+| Correctness  |       |
+| Readability  |       |
+| Architecture |       |
+| Security     |       |
+| Performance  |       |

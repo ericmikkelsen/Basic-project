@@ -15,10 +15,10 @@
 
 ## Five-axis self-review
 
-| Axis | Notes |
-|---|---|
-| Correctness | |
-| Readability | |
-| Architecture | |
-| Security | |
-| Performance | |
+| Axis         | Notes |
+| ------------ | ----- |
+| Correctness  |       |
+| Readability  |       |
+| Architecture |       |
+| Security     |       |
+| Performance  |       |

@@ -1,11 +1,11 @@
 ---
 description: Simplify code for clarity and maintainability — reduce complexity without changing behavior
 tools:
-  - codebase
-  - changes
-  - editFiles
-  - terminalLastCommand
-  - runCommand
+    - codebase
+    - changes
+    - editFiles
+    - terminalLastCommand
+    - runCommand
 ---
 
 # Simplify Mode
@@ -28,21 +28,21 @@ You are operating in **code simplification** mode. Your job is to reduce complex
 ```typescript
 // Before
 function process(user) {
-  if (user) {
-    if (user.isActive) {
-      if (user.hasPermission) {
-        // actual logic
-      }
-    }
-  }
+	if (user) {
+		if (user.isActive) {
+			if (user.hasPermission) {
+				// actual logic
+			}
+		}
+	}
 }
 
 // After
 function process(user) {
-  if (!user) return;
-  if (!user.isActive) return;
-  if (!user.hasPermission) return;
-  // actual logic
+	if (!user) return;
+	if (!user.isActive) return;
+	if (!user.hasPermission) return;
+	// actual logic
 }
 ```
 
@@ -56,11 +56,11 @@ Nested ternaries are hard to read. Use `if/else` or a `switch` when there are mo
 
 ### Generic names → descriptive names
 
-`data`, `obj`, `temp`, `result` tell the reader nothing. Name things by what they *are*: `userProfile`, `filteredOrders`, `parsedConfig`.
+`data`, `obj`, `temp`, `result` tell the reader nothing. Name things by what they _are_: `userProfile`, `filteredOrders`, `parsedConfig`.
 
 ### Duplicated logic → shared function
 
-If the same logic appears in two or more places, extract it into a shared helper. But wait for the *third* duplication before abstracting.
+If the same logic appears in two or more places, extract it into a shared helper. But wait for the _third_ duplication before abstracting.
 
 ### Dead code → remove
 

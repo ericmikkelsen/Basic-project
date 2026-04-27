@@ -21,18 +21,23 @@ Multi-dimensional code review with quality gates. Every change gets reviewed bef
 ## The Five-Axis Review
 
 ### 1. Correctness
+
 Does the code do what it claims to do? Are edge cases handled? Are error paths handled?
 
 ### 2. Readability & Simplicity
+
 Can another engineer understand this code without the author explaining it? Are names descriptive? Is the control flow straightforward?
 
 ### 3. Architecture
+
 Does the change fit the system's design? Does it follow existing patterns? Are module boundaries clean?
 
 ### 4. Security
+
 Is user input validated and sanitized? Are secrets kept out of code? Is authentication/authorization checked where needed?
 
 ### 5. Performance
+
 Any N+1 query patterns? Any unbounded loops? Any unnecessary re-renders?
 
 ## Change Sizing
@@ -51,10 +56,10 @@ Team-wide limits are stored in `.github/review-config.json`:
 
 ```json
 {
-  "reviewabilityBudget": {
-    "maxLinesPerChapter": 300,
-    "maxFilesPerChapter": 5
-  }
+	"reviewabilityBudget": {
+		"maxLinesPerChapter": 300,
+		"maxFilesPerChapter": 5
+	}
 }
 ```
 
@@ -69,17 +74,17 @@ git diff --staged --stat
 
 Both limits matter independently: a 300-line change spread across 15 files is just as hard to review as a 1,000-line change in one file. Lines measure volume; files measure cognitive scatter.
 
-When a limit is exceeded, propose a split *before* committing — not after. Use the `narrative-branching` skill to structure the split as story chapters.
+When a limit is exceeded, propose a split _before_ committing — not after. Use the `narrative-branching` skill to structure the split as story chapters.
 
 ## Review Feedback Categories
 
-| Prefix | Meaning | Author Action |
-|--------|---------|---------------|
-| *(no prefix)* | Required change | Must address before merge |
-| **Critical:** | Blocks merge | Security vulnerability, data loss |
-| **Nit:** | Minor, optional | Author may ignore |
-| **Consider:** | Suggestion | Worth considering but not required |
-| **FYI** | Informational | No action needed |
+| Prefix        | Meaning         | Author Action                      |
+| ------------- | --------------- | ---------------------------------- |
+| _(no prefix)_ | Required change | Must address before merge          |
+| **Critical:** | Blocks merge    | Security vulnerability, data loss  |
+| **Nit:**      | Minor, optional | Author may ignore                  |
+| **Consider:** | Suggestion      | Worth considering but not required |
+| **FYI**       | Informational   | No action needed                   |
 
 ## Verification
 

@@ -1,12 +1,12 @@
 ---
 description: Run the TDD cycle for new features, or the Prove-It pattern for bug fixes
 tools:
-  - codebase
-  - changes
-  - editFiles
-  - createFile
-  - terminalLastCommand
-  - runCommand
+    - codebase
+    - changes
+    - editFiles
+    - createFile
+    - terminalLastCommand
+    - runCommand
 ---
 
 # Test Mode

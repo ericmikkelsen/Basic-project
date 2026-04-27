@@ -33,6 +33,7 @@ Implement ──→ Test ──→ Verify ──→ Commit ──→ Next slice
 ```
 
 For each slice:
+
 1. **Implement** the smallest complete piece of functionality
 2. **Test** — run the test suite (or write a test if none exists)
 3. **Verify** — confirm the slice works (tests pass, build succeeds)

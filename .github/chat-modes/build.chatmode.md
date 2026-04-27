@@ -1,12 +1,12 @@
 ---
 description: Implement the next pending task incrementally — RED→GREEN→commit cycle using TDD
 tools:
-  - codebase
-  - changes
-  - editFiles
-  - createFile
-  - terminalLastCommand
-  - runCommand
+    - codebase
+    - changes
+    - editFiles
+    - createFile
+    - terminalLastCommand
+    - runCommand
 ---
 
 # Build Mode
@@ -22,6 +22,7 @@ Read `tasks/todo.md` and identify the first unchecked task. Read its full detail
 ### Step 2 — Load context
 
 Load:
+
 - The task's acceptance criteria
 - Relevant existing code, types, and patterns
 - Existing tests for the area you're changing
@@ -52,6 +53,7 @@ Clean up the implementation while keeping all tests green. Remove duplication, i
 ### Step 7 — Commit
 
 Commit with a conventional commit message:
+
 ```
 feat(scope): short description of what was implemented
 ```

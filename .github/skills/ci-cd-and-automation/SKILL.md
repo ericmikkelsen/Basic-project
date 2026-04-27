@@ -37,26 +37,26 @@ Pull Request Opened → Lint → Type Check → Tests → Build → Security Aud
 ```yaml
 name: CI
 on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
 
 jobs:
-  quality:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run lint
-      - run: npx tsc --noEmit
-      - run: npm test -- --coverage
-      - run: npm run build
-      - run: npm audit --audit-level=high
+    quality:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  cache: 'npm'
+            - run: npm ci
+            - run: npm run lint
+            - run: npx tsc --noEmit
+            - run: npm test -- --coverage
+            - run: npm run build
+            - run: npm audit --audit-level=high
 ```
 
 ## Conventional Commits + Release Automation
