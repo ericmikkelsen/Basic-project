@@ -116,8 +116,12 @@ git checkout -b chapter/<name>/<seq>-<slug>
 # implement only what the chapter title says
 # use visual-pr-communication skill to generate PR description
 git push -u origin chapter/<name>/<seq>-<slug>
-# open PR targeting story/<name>
+test -n "$(git ls-remote --exit-code --heads origin chapter/<name>/<seq>-<slug>)"
+gh pr create --base story/<name> --head chapter/<name>/<seq>-<slug> --title "docs(chapter): <seq>-<slug>" --body "Chapter PR for <name>."
+gh pr list --base story/<name> --head chapter/<name>/<seq>-<slug> --state open
 ```
+
+Do not report a chapter as created unless the `gh pr list` command above returns a non-empty result confirming an open PR with the correct base and head.
 
 **Chapter rules:**
 - A chapter must not touch files that belong to a different chapter's concern.
@@ -175,6 +179,12 @@ Before creating any chapter branch:
 - [ ] Each chapter scope is one sentence and does not overlap with another chapter
 - [ ] Chapter sequence is valid — no chapter depends on a later chapter
 - [ ] Branch names follow the naming convention
+
+Before reporting completion:
+
+- [ ] Story branch is pushed to origin
+- [ ] Each chapter branch is pushed to origin
+- [ ] Each chapter PR targets `story/<name>`
 
 ## SMART Goals
 
