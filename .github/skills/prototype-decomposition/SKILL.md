@@ -201,7 +201,7 @@ Prototype branches often have tangled changes (one commit touches three concerns
 Before declaring the restructure complete:
 
 - [ ] Every line from the prototype is accounted for in some chapter
-- [ ] No chapter exceeds the reviewability budget (300 lines / 5 files per `.github/review-config.json`)
+- [ ] No chapter exceeds the reviewability budget (300 lines / 5 non-deleted files per `.github/review-config.json`)
 - [ ] Each chapter's tests pass independently
 - [ ] The story branch end state matches the prototype end state (`git diff` is empty or intentional)
 - [ ] The prototype branch is still intact and reachable (fallback available)
@@ -209,10 +209,10 @@ Before declaring the restructure complete:
 
 ## SMART Goals
 
-| Goal                                                  | Measure                                              | Target              |
-| ----------------------------------------------------- | ---------------------------------------------------- | ------------------- |
-| Complete Phase 1 (analysis + proposal)                | Time from `/rescue` invocation to human gate         | ≤ 2 hours           |
-| Complete Phase 2 (restructure) after approval         | Time from approval to all chapter PRs open           | ≤ 2 business days   |
-| No chapter exceeds the reviewability budget           | `git diff --stat` per chapter                        | 300 lines / 5 files |
-| Prototype branch preserved until story merges to main | Branch still exists in `git branch -r`               | 100%                |
-| All proposed chapters have a rationale                | "Rationale" column filled in proposed STORY.md table | 100% of chapters    |
+| Goal                                                  | Measure                                                                     | Target              |
+| ----------------------------------------------------- | --------------------------------------------------------------------------- | ------------------- |
+| Complete Phase 1 (analysis + proposal)                | Time from `/rescue` invocation to human gate                                | ≤ 2 hours           |
+| Complete Phase 2 (restructure) after approval         | Time from approval to all chapter PRs open                                  | ≤ 2 business days   |
+| No chapter exceeds the reviewability budget           | `git diff --stat` per chapter, excluding deleted-only files from file count | 300 lines / 5 files |
+| Prototype branch preserved until story merges to main | Branch still exists in `git branch -r`                                      | 100%                |
+| All proposed chapters have a rationale                | "Rationale" column filled in proposed STORY.md table                        | 100% of chapters    |
