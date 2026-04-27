@@ -116,8 +116,8 @@ git checkout -b chapter/<name>/<seq>-<slug>
 # implement only what the chapter title says
 # use visual-pr-communication skill to generate PR description
 git push -u origin chapter/<name>/<seq>-<slug>
-git ls-remote --heads origin chapter/<name>/<seq>-<slug>
-gh pr create --base story/<name> --head chapter/<name>/<seq>-<slug>
+test -n "$(git ls-remote --exit-code --heads origin chapter/<name>/<seq>-<slug>)"
+gh pr create --base story/<name> --head chapter/<name>/<seq>-<slug> --title "docs(chapter): <seq>-<slug>" --body "Chapter PR for <name>."
 ```
 
 Do not report a chapter as created unless the remote branch exists and the PR exists.
