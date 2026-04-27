@@ -55,6 +55,7 @@ What you do:
 - GREEN: write the minimum code to pass.
 - REFACTOR: clean up while keeping tests green.
 - Add JSDoc for changed exported APIs and clarifying comments for non-obvious logic before committing.
+- Make commit messages and comments read like a clear presentation of the chapter's idea.
 
 Outcome:
 
@@ -86,6 +87,7 @@ Outcome:
 Note:
 
 - For story workflows, run `review` for each chapter before committing, not only at final merge time.
+- Review whether commit history and comments help a fresh reader understand the idea sequence quickly.
 
 ## 7) Make PRs easier to understand
 
@@ -139,5 +141,6 @@ Outcome:
 4. Run `build` task-by-task.
 5. Run `review` before committing the chapter, then run `visualize` before PR.
 6. Add JSDoc for changed exported APIs and clarifying comments for non-obvious logic before each chapter commit.
-7. Make a good-faith reviewability budget check before each chapter commit (`git diff --staged --stat -- . ':(exclude)package-lock.json'`).
-8. Run `ship` before release.
+7. Make commit messages and comments read like a clear presentation of the chapter's idea.
+8. Make a good-faith reviewability budget check before each chapter commit (`git diff --staged --stat -- . ':(exclude)package-lock.json'`).
+9. Run `ship` before release.

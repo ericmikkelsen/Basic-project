@@ -24,6 +24,12 @@ You are operating in **code review** mode. Your job is to review the current cha
 - Are comments present where the _why_ isn't obvious?
 - Is JSDoc present or updated for changed exported APIs?
 - Are clarifying comments present for non-obvious logic and edge-case behavior?
+- Do the comments read like a clear presentation of the idea, rather than line-by-line narration?
+
+### 2.5 Commit Narrative
+
+- Do the commit messages communicate the sequence of ideas clearly?
+- Does the chapter history read like a coherent progression instead of unrelated edits?
 
 ### 3. Architecture
 - Does the change fit the system's existing design?
@@ -88,4 +94,5 @@ Before approving a change:
 - [ ] CI passes (or would pass)
 - [ ] JSDoc is updated for changed exported APIs
 - [ ] Clarifying comments exist for non-obvious logic
+- [ ] Commit messages clearly communicate the idea progression
 - [ ] No outstanding Critical findings

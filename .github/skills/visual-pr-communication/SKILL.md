@@ -129,6 +129,8 @@ graph LR
 - [ ] Tests cover the "After" behavior
 - [ ] Clarifying comments added for non-obvious logic
 - [ ] JSDoc added/updated for changed exported APIs
+- [ ] Commit history communicates a coherent progression of ideas
+- [ ] Comments support fast comprehension like presentation notes, not line-by-line narration
 ````
 
 ## Complexity Signal

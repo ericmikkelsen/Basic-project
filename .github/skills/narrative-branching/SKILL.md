@@ -9,6 +9,8 @@ description: Structures work as a story with chapters. Use when starting any fea
 
 Treat every feature as a story and every reviewable chunk as a chapter. The story branch is a table of contents; each chapter branch is one page. Reviewers read in order, understand incrementally, and never face a thousand-line diff.
 
+"Story" here means a clear presentation path, not creative writing. The structure should help a reader understand what changed, why it changed, and what idea each step contributes.
+
 ## When to Use
 
 - Starting a feature that will touch more than one concern
@@ -122,6 +124,9 @@ git push -u origin chapter/<name>/<seq>-<slug>
 **Chapter rules:**
 - A chapter must not touch files that belong to a different chapter's concern.
 - A chapter must not anticipate or partially implement the next chapter.
+- A chapter should run `plan` and `review` before committing so feedback is addressed within the chapter branch.
+- A chapter's commits should read like a clear progression of ideas, not an arbitrary sequence of edits.
+- Comments and JSDoc in the chapter should orient the reader quickly, like speaker notes in a clear presentation.
 - When a chapter is merged, delete its branch.
 
 ### Step 4 — Merge story to main
@@ -175,6 +180,16 @@ Before creating any chapter branch:
 - [ ] Each chapter scope is one sentence and does not overlap with another chapter
 - [ ] Chapter sequence is valid — no chapter depends on a later chapter
 - [ ] Branch names follow the naming convention
+
+Before reporting completion:
+
+- [ ] Story branch is pushed to origin
+- [ ] Each chapter branch is pushed to origin
+- [ ] Each chapter PR targets `story/<name>`
+- [ ] Each chapter had a `plan` pass and a `review` pass before commit
+- [ ] Each chapter included a good-faith budget check before commit
+- [ ] Each chapter's commits communicate a coherent idea progression
+- [ ] Comments and JSDoc help a new reader understand the chapter quickly
 
 ## SMART Goals
 

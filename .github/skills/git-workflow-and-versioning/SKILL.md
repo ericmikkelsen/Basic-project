@@ -29,6 +29,8 @@ Each commit does one logical thing.
 
 ### 3. Descriptive Messages (Conventional Commits)
 
+Commit messages should communicate a clear idea, not just a file operation. Inside a chapter branch, the commit list should read like a short presentation of the chapter's logic: setup, key change, validation, polish. The goal is not literary style. The goal is fast comprehension for the next reader.
+
 **Format:**
 ```
 <type>(<optional scope>): <short description>
@@ -59,6 +61,13 @@ BREAKING CHANGE: The /v1/tasks endpoint has been removed. Use /v2/tasks instead.
 ### 4. Keep Concerns Separate
 
 Don't combine formatting changes with behavior changes.
+
+### 4.5 Narrative Clarity
+
+- A chapter's commits should tell a coherent story in order, or at minimum clearly communicate one idea per commit.
+- Prefer commit subjects that explain the change in domain terms, not only implementation terms.
+- Use the commit body when needed to explain why this step exists in the chapter.
+- If the commit list reads like random file edits, the slice is underspecified and should be regrouped.
 
 ### 5. Size Your Changes
 
