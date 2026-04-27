@@ -61,7 +61,7 @@ jobs:
 
 ## Conventional Commits + Release Automation
 
-This project uses [Release Please](https://github.com/googleapis/release-please) for automated releases triggered by conventional commits. The workflow is in `.github/workflows/release-please.yml`.
+This project uses [semantic-release](https://semantic-release.gitbook.io/semantic-release/) for automated releases triggered by conventional commits. The workflow is in `.github/workflows/semantic-release.yml`.
 
 ## Dependabot
 
