@@ -66,7 +66,6 @@ Output the complete PR description block ready to paste:
 ```mermaid
 …
 ```
-````
 
 ### Before / After
 
@@ -88,8 +87,7 @@ Output the complete PR description block ready to paste:
 - [ ] Before/After is understandable without reading the diff
 - [ ] Reviewability budget respected (see `.github/review-config.json`)
 - [ ] Tests cover the "After" behavior
-
-```
+````
 
 ## Complexity Signals
 
@@ -105,4 +103,3 @@ If any of these are true, flag it before finishing:
 - [ ] Before/After uses behavioral language, not implementation language
 - [ ] User-visible delta is one sentence
 - [ ] Entire artifact fits on one screen
-```
