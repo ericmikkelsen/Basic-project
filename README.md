@@ -8,18 +8,18 @@ This repo ships agent-skills workflows via Copilot custom chat modes.
 
 `.github/chat-modes/` contains ten [Copilot custom chat modes](https://code.visualstudio.com/docs/copilot/chat/chat-modes) (VS Code 1.99+). Select a mode from the Copilot Chat UI to activate its workflow instructions:
 
-| Mode file                | Activates                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------------ |
-| `spec.chatmode.md`       | Spec-driven development — write `SPEC.md` before any code                            |
-| `plan.chatmode.md`       | Break a spec into ordered tasks with acceptance criteria                              |
-| `story.chatmode.md`      | Organize work as a story with chapter branches                                       |
-| `build.chatmode.md`      | Implement the next task — RED→GREEN→commit (TDD)                                     |
-| `test.chatmode.md`       | TDD cycle for features / Prove-It pattern for bugs                                   |
-| `review.chatmode.md`     | Five-axis code review: correctness, readability, architecture, security, performance |
-| `visualize.chatmode.md`  | Generate a Mermaid change map for a PR                                               |
-| `ship.chatmode.md`       | Pre-launch checklist → GO/NO-GO decision with rollback plan                          |
-| `simplify.chatmode.md`   | Reduce complexity without changing behavior                                          |
-| `rescue.chatmode.md`     | Decompose an oversized branch into reviewable chapters                               |
+| Mode file               | Activates                                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `spec.chatmode.md`      | Spec-driven development — write `SPEC.md` before any code                            |
+| `plan.chatmode.md`      | Break a spec into ordered tasks with acceptance criteria                             |
+| `story.chatmode.md`     | Organize work as a story with chapter branches                                       |
+| `build.chatmode.md`     | Implement the next task — RED→GREEN→commit (TDD)                                     |
+| `test.chatmode.md`      | TDD cycle for features / Prove-It pattern for bugs                                   |
+| `review.chatmode.md`    | Five-axis code review: correctness, readability, architecture, security, performance |
+| `visualize.chatmode.md` | Generate a Mermaid change map for a PR                                               |
+| `ship.chatmode.md`      | Pre-launch checklist → GO/NO-GO decision with rollback plan                          |
+| `simplify.chatmode.md`  | Reduce complexity without changing behavior                                          |
+| `rescue.chatmode.md`    | Decompose an oversized branch into reviewable chapters                               |
 
 ## Agent Skills
 
