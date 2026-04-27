@@ -1,6 +1,6 @@
 {
 	"name": "basic-project",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "Code repository starter template with conventional commits and automated versioning",
 	"private": true,
 	"scripts": {
