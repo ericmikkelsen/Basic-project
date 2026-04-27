@@ -196,12 +196,12 @@ Before reporting completion:
 
 These targets make story/chapter health measurable so teams can discuss and tune them:
 
-| Goal                                                | Measure                                     | Default target      |
-| --------------------------------------------------- | ------------------------------------------- | ------------------- |
-| Chapter PRs merged within 1 business day of opening | PR open → merge duration                    | ≤ 1 day             |
-| Story branch total lifetime                         | Branch age from first commit                | ≤ 5 business days   |
-| No chapter diff exceeds the reviewability budget    | `git diff --stat` line count and file count | 300 lines / 5 files |
-| Every chapter PR has a visual artifact              | PR description contains a mermaid block     | 100%                |
+| Goal                                                | Measure                                                 | Default target      |
+| --------------------------------------------------- | ------------------------------------------------------- | ------------------- |
+| Chapter PRs merged within 1 business day of opening | PR open → merge duration                                | ≤ 1 day             |
+| Story branch total lifetime                         | Branch age from first commit                            | ≤ 5 business days   |
+| No chapter diff exceeds the reviewability budget    | `git diff --stat` line count and non-deleted file count | 300 lines / 5 files |
+| Every chapter PR has a visual artifact              | PR description contains a mermaid block                 | 100%                |
 
 ## Handling a Red Chapter
 

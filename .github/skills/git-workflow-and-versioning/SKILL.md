@@ -77,13 +77,13 @@ refactor/<short-description>  → refactor/auth-module
 
 ## Versioning
 
-This project uses [Conventional Commits](https://www.conventionalcommits.org/) with automated versioning via [Release Please](https://github.com/googleapis/release-please):
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) with automated versioning via [semantic-release](https://semantic-release.gitbook.io/semantic-release/):
 
 - `fix:` → patch bump (1.0.0 → 1.0.1)
 - `feat:` → minor bump (1.0.0 → 1.1.0)
 - `feat!:` or `BREAKING CHANGE:` → major bump (1.0.0 → 2.0.0)
 
-Release PRs are automatically created when commits land on `main`. Merging the release PR tags the release and updates `CHANGELOG.md`.
+Every push to `main` is evaluated immediately; semantic-release tags the release and updates `CHANGELOG.md` automatically.
 
 ## Pre-Commit Hygiene
 

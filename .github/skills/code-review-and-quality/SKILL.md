@@ -70,9 +70,9 @@ git diff --staged --stat
 ```
 
 - If lines changed exceeds `maxLinesPerChapter` → split the branch.
-- If files touched exceeds `maxFilesPerChapter` → split the branch.
+- If non-deleted files touched exceeds `maxFilesPerChapter` → split the branch.
 
-Both limits matter independently: a 300-line change spread across 15 files is just as hard to review as a 1,000-line change in one file. Lines measure volume; files measure cognitive scatter.
+Both limits matter independently: a 300-line change spread across 15 non-deleted files is just as hard to review as a 1,000-line change in one file. Lines measure volume; files measure cognitive scatter. Deleted-only files are excluded from the file-count budget because they reduce surface area rather than expand it.
 
 When a limit is exceeded, propose a split _before_ committing — not after. Use the `narrative-branching` skill to structure the split as story chapters.
 

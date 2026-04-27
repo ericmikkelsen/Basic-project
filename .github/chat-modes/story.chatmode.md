@@ -99,7 +99,7 @@ Implement only what the current chapter says. Check the reviewability budget bef
 
 ```bash
 git diff --staged --stat
-# maxLinesPerChapter: 300, maxFilesPerChapter: 5 (see .github/review-config.json)
+# maxLinesPerChapter: 300, maxFilesPerChapter: 5 excluding deleted-only files (see .github/review-config.json)
 ```
 
 Push and verify the chapter branch, then open a PR targeting the story branch:

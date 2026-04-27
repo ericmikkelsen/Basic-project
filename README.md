@@ -40,8 +40,11 @@ For a plain-language developer flow, see [docs/developer-workflow.md](./docs/dev
 ## Conventional Commits & Versioning
 
 - Every commit must follow [Conventional Commits](https://www.conventionalcommits.org/) format
-- Versions are managed automatically by [Release Please](https://github.com/googleapis/release-please)
-- `fix:` → patch · `feat:` → minor · `feat!:` → major
+- Versions are managed automatically by [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
+- Every push to `main` created by a merged PR is evaluated immediately for the highest releasable bump
+- `fix:` → patch · `feat:` → minor · `feat!:` / `BREAKING CHANGE:` → major
+- `chore:`, `docs:`, `style:`, `test:`, `build:`, and `ci:` do not trigger releases by default
+- One-time bootstrap: create the initial tag `v0.1.0` before the first automated release if you want semantic-release to continue from the current version
 
 ## Docs
 

@@ -10,9 +10,9 @@
 
 ## Versioning
 
-- Versions are managed automatically by [Release Please](https://github.com/googleapis/release-please)
+- Versions are managed automatically by [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
 - `fix:` → patch bump · `feat:` → minor bump · `feat!:` / `BREAKING CHANGE:` → major bump
-- Merging the release PR created by Release Please tags the release and updates `CHANGELOG.md`
+- Every push to `main` is evaluated immediately; semantic-release tags the release and updates `CHANGELOG.md`
 - Never manually edit `package.json` version or `CHANGELOG.md`
 
 ## Testing
