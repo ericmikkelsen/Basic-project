@@ -21,7 +21,9 @@ You are operating in **code review** mode. Your job is to review the current cha
 - Can another engineer understand this code without the author explaining it?
 - Are names descriptive and accurate?
 - Is the control flow straightforward? (no unnecessary nesting, no clever tricks)
-- Are comments present where the *why* isn't obvious?
+- Are comments present where the _why_ isn't obvious?
+- Is JSDoc present or updated for changed exported APIs?
+- Are clarifying comments present for non-obvious logic and edge-case behavior?
 
 ### 3. Architecture
 - Does the change fit the system's existing design?
@@ -84,4 +86,6 @@ Before approving a change:
 - [ ] No secrets in code
 - [ ] Change is appropriately sized (~100–300 lines)
 - [ ] CI passes (or would pass)
+- [ ] JSDoc is updated for changed exported APIs
+- [ ] Clarifying comments exist for non-obvious logic
 - [ ] No outstanding Critical findings

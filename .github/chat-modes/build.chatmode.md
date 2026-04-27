@@ -49,6 +49,14 @@ If any step fails, fix it before committing.
 
 Clean up the implementation while keeping all tests green. Remove duplication, improve names, simplify logic.
 
+### Step 6.5 — Documentation pass
+
+Before committing, add maintainability docs in changed code:
+
+- Add JSDoc to exported functions, classes, and types touched by this task.
+- Add clarifying comments for non-obvious logic, edge-case handling, and tradeoffs.
+- Keep comments brief and focused on _why_, not restating obvious code.
+
 ### Step 7 — Commit
 
 Commit with a conventional commit message:
@@ -81,5 +89,7 @@ After each task:
 - [ ] Build succeeds
 - [ ] Type checking passes
 - [ ] Linting passes
+- [ ] JSDoc added/updated for touched exported APIs
+- [ ] Clarifying comments added for non-obvious logic
 - [ ] Task committed with conventional commit message
 - [ ] Task checked off in `tasks/todo.md`

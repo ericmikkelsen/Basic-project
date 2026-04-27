@@ -42,6 +42,10 @@ What you do:
 Outcome:
 - A concrete `tasks/plan.md` and `tasks/todo.md` for execution.
 
+Note:
+
+- Do this at chapter start before writing chapter code.
+
 ## 4) Build one task at a time
 
 Use mode/skill: `build` / `test-driven-development`, `incremental-implementation`
@@ -50,9 +54,11 @@ What you do:
 - RED: write a failing test.
 - GREEN: write the minimum code to pass.
 - REFACTOR: clean up while keeping tests green.
+- Add JSDoc for changed exported APIs and clarifying comments for non-obvious logic before committing.
 
 Outcome:
-- Small, safe commits with proof of behavior.
+
+- Small, safe commits with proof of behavior and maintainable documentation.
 
 ## 5) Handle bugs with proof
 
@@ -76,6 +82,10 @@ What you do:
 
 Outcome:
 - Cleaner PRs and fewer late surprises.
+
+Note:
+
+- For story workflows, run `review` for each chapter before committing, not only at final merge time.
 
 ## 7) Make PRs easier to understand
 
@@ -125,7 +135,9 @@ Outcome:
 
 1. Run `spec` if scope is unclear.
 2. Run `story` if work is larger than one reviewable PR.
-3. Run `plan` for the current chapter.
+3. Run `plan` for the current chapter before coding.
 4. Run `build` task-by-task.
-5. Run `review` and `visualize` before PR.
-6. Run `ship` before release.
+5. Run `review` before committing the chapter, then run `visualize` before PR.
+6. Add JSDoc for changed exported APIs and clarifying comments for non-obvious logic before each chapter commit.
+7. Make a good-faith reviewability budget check before each chapter commit (`git diff --staged --stat -- . ':(exclude)package-lock.json'`).
+8. Run `ship` before release.

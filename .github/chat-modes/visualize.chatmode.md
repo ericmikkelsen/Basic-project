@@ -80,7 +80,9 @@ Output the complete PR description block ready to paste:
 - [ ] Before/After is understandable without reading the diff
 - [ ] Reviewability budget respected (see `.github/review-config.json`)
 - [ ] Tests cover the "After" behavior
-```
+- [ ] Clarifying comments added for non-obvious logic
+- [ ] JSDoc added/updated for changed exported APIs
+````
 
 ## Complexity Signals
 
