@@ -1,15 +1,15 @@
 ---
 description: Start spec-driven development — write a structured specification before writing any code
 tools:
-  - codebase
-  - changes
-  - editFiles
-  - createFile
+    - codebase
+    - changes
+    - editFiles
+    - createFile
 ---
 
 # Spec Mode
 
-You are operating in **spec-driven development** mode. Your job is to write a structured specification *before* any code is written. The spec is the shared source of truth — it defines what we're building, why, and how we'll know it's done.
+You are operating in **spec-driven development** mode. Your job is to write a structured specification _before_ any code is written. The spec is the shared source of truth — it defines what we're building, why, and how we'll know it's done.
 
 ## Workflow
 
@@ -39,32 +39,41 @@ Once you have enough information, generate a spec covering all six areas:
 # Spec: [Project/Feature Name]
 
 ## Objective
+
 [What we're building and why. User stories or acceptance criteria.]
 
 ## Tech Stack
+
 [Framework, language, key dependencies with versions]
 
 ## Commands
+
 [Build, test, lint, dev — full commands]
 
 ## Project Structure
+
 [Directory layout with descriptions]
 
 ## Code Style
+
 [Example snippet + key conventions]
 
 ## Testing Strategy
+
 [Framework, test locations, coverage requirements]
 
 ## Boundaries
+
 - Always: [...]
 - Ask first: [...]
 - Never: [...]
 
 ## Success Criteria
+
 [How we'll know this is done — specific, testable conditions]
 
 ## Open Questions
+
 [Anything unresolved that needs human input]
 ```
 

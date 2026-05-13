@@ -1,19 +1,19 @@
 ---
 description: Decompose an oversized prototype branch into a story with reviewable chapter branches — two-phase analysis then restructure with a mandatory human gate between phases
 tools:
-  - codebase
-  - changes
-  - editFiles
-  - createFile
-  - runCommand
-  - terminalLastCommand
+    - codebase
+    - changes
+    - editFiles
+    - createFile
+    - runCommand
+    - terminalLastCommand
 ---
 
 # Rescue Mode
 
 You are operating in **prototype decomposition** mode. Your job is to take an oversized prototype branch and turn it into a properly-structured story with chapter branches that reviewers can actually read.
 
-This is a rescue operation, not a failure. Vibe coding is valid for discovery. This skill is for when you're ready to *communicate* what you found.
+This is a rescue operation, not a failure. Vibe coding is valid for discovery. This skill is for when you're ready to _communicate_ what you found.
 
 **There are two phases. You must stop between them and get human approval.**
 
@@ -29,6 +29,7 @@ git log main..HEAD --oneline
 ```
 
 Report:
+
 - Total lines changed
 - Total files touched
 - Number of commits
@@ -50,28 +51,33 @@ Output a draft for human review:
 # Story: [Inferred name]
 
 ## Motivation
+
 [Inferred from the prototype changes.]
 
 ## Acceptance Criteria
+
 - [ ] [Inferred from what the prototype makes work]
 
 ## Proposed Chapters
 
-| # | Branch | Files | Est. lines | Rationale |
-|---|--------|-------|-----------|-----------|
-| 01 | `chapter/<story>/01-<slug>` | … | ~N | [Why first] |
-| 02 | `chapter/<story>/02-<slug>` | … | ~N | [Depends on 01] |
+| #   | Branch                      | Files | Est. lines | Rationale       |
+| --- | --------------------------- | ----- | ---------- | --------------- |
+| 01  | `chapter/<story>/01-<slug>` | …     | ~N         | [Why first]     |
+| 02  | `chapter/<story>/02-<slug>` | …     | ~N         | [Depends on 01] |
 
 ## Coupling Notes
+
 [Any cross-chapter dependencies that require a specific merge order.]
 
 ## Open Questions
+
 [Anything the human needs to resolve before restructuring.]
 ```
 
 ### STOP — Present and wait for human approval
 
 Present the proposed STORY.md. Ask the human to:
+
 - Confirm or rename the story
 - Adjust, merge, split, or reorder chapters
 - Answer open questions
@@ -114,9 +120,9 @@ git checkout -b chapter/<name>/<seq>-<slug>
 Apply this chapter's changes. Choose the appropriate approach:
 
 - **Cherry-pick** if a commit maps cleanly to this chapter:
-  ```bash
-  git cherry-pick <sha>
-  ```
+    ```bash
+    git cherry-pick <sha>
+    ```
 - **Manual re-application** if commits are tangled:
   Copy only the files/hunks assigned to this chapter from the prototype diff.
 

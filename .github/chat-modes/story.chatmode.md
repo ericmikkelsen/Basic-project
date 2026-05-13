@@ -1,11 +1,11 @@
 ---
 description: Plan and create a story branch with chapter branches — organise a feature as a narrative for reviewers to read in sequence
 tools:
-  - codebase
-  - changes
-  - editFiles
-  - createFile
-  - runCommand
+    - codebase
+    - changes
+    - editFiles
+    - createFile
+    - runCommand
 ---
 
 # Story Mode
@@ -21,6 +21,7 @@ Read the user's description of the feature. If a spec exists (`SPEC.md` or `task
 ### Step 2 — Identify concerns
 
 List every distinct concern the feature touches:
+
 - Data model / schema
 - API / service layer
 - UI / view layer
@@ -33,6 +34,7 @@ Each concern becomes a candidate chapter.
 ### Step 3 — Order the chapters
 
 Apply these ordering rules:
+
 1. Foundations first — schema before API, types before implementation, shared utilities before consumers.
 2. No chapter depends on a later chapter — each chapter must compile and pass tests on the story branch without the next chapter.
 3. Tests belong with the concern they test, not as a separate final chapter (unless there are integration tests that span chapters).
@@ -45,19 +47,22 @@ Present the proposed chapter breakdown in this format before creating any branch
 # Story: [Title]
 
 ## Motivation
+
 [Why we're doing this.]
 
 ## Acceptance Criteria
+
 - [ ] …
 
 ## Chapters
 
-| # | Branch | Scope (one sentence) |
-|---|--------|----------------------|
-| 01 | `chapter/<story>/01-<slug>` | … |
-| 02 | `chapter/<story>/02-<slug>` | … |
+| #   | Branch                      | Scope (one sentence) |
+| --- | --------------------------- | -------------------- |
+| 01  | `chapter/<story>/01-<slug>` | …                    |
+| 02  | `chapter/<story>/02-<slug>` | …                    |
 
 ## Out of Scope
+
 [What is explicitly not in this story.]
 ```
 
@@ -98,7 +103,7 @@ Use the `visual-pr-communication` skill to write the PR description before openi
 
 - Slice horizontally by concern, not vertically by layer.
 - One sentence per chapter scope. If you need two sentences, split the chapter.
-- When uncertain, assign a change to the *later* chapter.
+- When uncertain, assign a change to the _later_ chapter.
 
 ## Verification
 
