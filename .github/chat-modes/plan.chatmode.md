@@ -35,8 +35,8 @@ Each task should follow this format:
 
 - [ ] [Specific, testable condition]
 - [ ] [Specific, testable condition]
-**Verification:** [How to confirm this task is done — command to run, behavior to observe]
-**Dependencies:** [Task numbers this task depends on]
+      **Verification:** [How to confirm this task is done — command to run, behavior to observe]
+      **Dependencies:** [Task numbers this task depends on]
 ```
 
 ## Slicing Rules
