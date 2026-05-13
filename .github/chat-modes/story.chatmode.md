@@ -1,11 +1,11 @@
 ---
 description: Plan and create a story branch with chapter branches — organise a feature as a narrative for reviewers to read in sequence
 tools:
-  - codebase
-  - changes
-  - editFiles
-  - createFile
-  - runCommand
+    - codebase
+    - changes
+    - editFiles
+    - createFile
+    - runCommand
 ---
 
 # Story Mode
@@ -21,6 +21,7 @@ Read the user's description of the feature. If a spec exists (`SPEC.md` or `task
 ### Step 2 — Identify concerns
 
 List every distinct concern the feature touches:
+
 - Data model / schema
 - API / service layer
 - UI / view layer
@@ -33,6 +34,7 @@ Each concern becomes a candidate chapter.
 ### Step 3 — Order the chapters
 
 Apply these ordering rules:
+
 1. Foundations first — schema before API, types before implementation, shared utilities before consumers.
 2. No chapter depends on a later chapter — each chapter must compile and pass tests on the story branch without the next chapter.
 3. Tests belong with the concern they test, not as a separate final chapter (unless there are integration tests that span chapters).
@@ -45,19 +47,22 @@ Present the proposed chapter breakdown in this format before creating any branch
 # Story: [Title]
 
 ## Motivation
+
 [Why we're doing this.]
 
 ## Acceptance Criteria
+
 - [ ] …
 
 ## Chapters
 
-| # | Branch | Scope (one sentence) |
-|---|--------|----------------------|
-| 01 | `chapter/<story>/01-<slug>` | … |
-| 02 | `chapter/<story>/02-<slug>` | … |
+| #   | Branch                      | Scope (one sentence) |
+| --- | --------------------------- | -------------------- |
+| 01  | `chapter/<story>/01-<slug>` | …                    |
+| 02  | `chapter/<story>/02-<slug>` | …                    |
 
 ## Out of Scope
+
 [What is explicitly not in this story.]
 ```
 
@@ -77,7 +82,9 @@ Write `STORY.md` to the story branch with the approved content. Commit:
 git add STORY.md
 git commit -m "docs(story): add STORY.md for <name>"
 git push -u origin story/<name>
-test -n "$(git ls-remote --exit-code --heads origin story/<name>)"
+LOCAL_SHA="$(git rev-parse HEAD)"
+REMOTE_SHA="$(git ls-remote --exit-code --heads origin "refs/heads/story/<name>" | awk '{print $1}')"
+test "$REMOTE_SHA" = "$LOCAL_SHA"
 ```
 
 Only continue after the story branch exists on `origin`.
@@ -101,7 +108,9 @@ Push and verify the chapter branch, then open a PR targeting the story branch:
 
 ```bash
 git push -u origin chapter/<name>/<seq>-<slug>
-test -n "$(git ls-remote --exit-code --heads origin chapter/<name>/<seq>-<slug>)"
+LOCAL_SHA="$(git rev-parse HEAD)"
+REMOTE_SHA="$(git ls-remote --exit-code --heads origin "refs/heads/chapter/<name>/<seq>-<slug>" | awk '{print $1}')"
+test "$REMOTE_SHA" = "$LOCAL_SHA"
 gh pr create \
     --base story/<name> \
     --head chapter/<name>/<seq>-<slug> \
@@ -112,7 +121,7 @@ gh pr list --base story/<name> --head chapter/<name>/<seq>-<slug> --state open
 
 Use the `visual-pr-communication` skill to generate the PR body before opening the PR.
 
-If `gh` CLI is unavailable or unauthenticated, provide a direct compare URL so the user can open the PR manually:
+If `gh` CLI is unavailable or unauthenticated, provide a direct compare URL so the user can open the PR manually, then require the user to share the resulting PR URL/number before reporting completion:
 
 ```text
 https://github.com/<owner>/<repo>/compare/story/<name>...chapter/<name>/<seq>-<slug>?expand=1
@@ -120,8 +129,10 @@ https://github.com/<owner>/<repo>/compare/story/<name>...chapter/<name>/<seq>-<s
 
 Never report a chapter as "created" unless both conditions are true:
 
-- `test -n "$(git ls-remote --exit-code --heads origin chapter/<name>/<seq>-<slug>)"` exits successfully.
+- `REMOTE_SHA` equals `LOCAL_SHA` from the branch verification commands above.
 - `gh pr list --base story/<name> --head chapter/<name>/<seq>-<slug> --state open` returns a non-empty result.
+
+If the PR was opened manually (no `gh`), never report completion until the user provides the PR URL/number and it matches `story/<name>` <- `chapter/<name>/<seq>-<slug>`.
 
 ### Step 7 — Repeat per chapter
 
@@ -131,7 +142,7 @@ Repeat Step 6 for each chapter in order (`01`, `02`, `03`, ...). Do not skip cha
 
 - Slice horizontally by concern, not vertically by layer.
 - One sentence per chapter scope. If you need two sentences, split the chapter.
-- When uncertain, assign a change to the *later* chapter.
+- When uncertain, assign a change to the _later_ chapter.
 
 ## Verification
 
